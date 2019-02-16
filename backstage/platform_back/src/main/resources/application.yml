@@ -1,16 +1,16 @@
-# ÈİÆ÷¼àÌı
+# å®¹å™¨ç›‘å¬
 management:
   endpoints:
     web:
       exposure:
         include: "*"
 
-# ¹«¹²ÅäÖÃ
+# mybatisé…ç½®
 mybatis:
   typeAliasesPackage: com.nf147.platform.entity
   mapperLocations: classpath:mappers/*.xml
 
-# ¿ª·¢ÅäÖÃ
+# springå¼€å‘é…ç½®
 spring:
   profiles:
     active: dev
@@ -20,9 +20,9 @@ spring:
     url: jdbc:mariadb://localhost:3306/testdb
     username: root
     password: 123456
-    # Êı¾İÔ´
+    # æ•°æ®åº“è¿æ¥æ± 
     type: com.mchange.v2.c3p0.ComboPooledDataSource
-
+  # çƒ­éƒ¨ç½²
   devtools:
     restart:
       enabled: true
