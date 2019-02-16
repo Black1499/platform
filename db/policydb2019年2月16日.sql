@@ -89,7 +89,7 @@ create table ge_analyzing(
   favor_times int comment '收藏数',
   readed_times int comment '阅读数',
 	created_time datetime comment '创建时间',
-	updated_time datetime comment '更新时间',
+	updated_time datetime comment '更新时间'
 ) comment = '解读表';
 -- 附件表
 create table ge_attachment(
@@ -311,7 +311,7 @@ create table `ge_user`(
   id int primary key auto_increment comment '编号',
   enterprise_id int comment '企业信息表 ID ',
   institution_id int comment '政府事业单位表 ID ',	 	-- 政府事业单位表
-  name varchar(32) comment '账号',
+  `number` varchar(32) comment '账号',
   password varchar(32) comment '密码',
   contact varchar(32) comment '联系人',
   email varchar(32) comment '邮箱',
@@ -327,7 +327,7 @@ create table `ge_user`(
 
 
 -- 角色表
-CREATE TABLE `ge_roles` (
+/*CREATE TABLE `ge_roles` (
   `id` INT NULL DEFAULT auto_increment COMMENT '角色编号',
   `name` VARCHAR(45) NULL COMMENT '角色名称',
   PRIMARY KEY (`id`))
@@ -361,7 +361,7 @@ CREATE TABLE `ge_user_root_associate` (
   `root_id` INT NULL COMMENT '权限ID',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-COMMENT = '用户权限关联表';
+COMMENT = '用户权限关联表';*/
 
 
 -- 记录系统错误日志表
@@ -396,6 +396,6 @@ create table ge_log_error(
 	log_operate_id int comment '操作日志表ID',
 	user_id int,
 	err_time datetime comment '错误时间',
-	err_info varchar(256) comment '错误信息' ,
+	err_info varchar(256) comment '错误信息',
   user_type varchar(8) comment '用户类型'
 )comment '错误日志表';
