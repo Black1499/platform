@@ -380,7 +380,7 @@ create table ge_log_operate(
 	user_id int comment '用户ID',
 	record varchar(32) comment '操作记录',
 	user_type varchar(8) comment '用户类型（政府、企业）'
-) comment '操作日志表';
+) comment = '操作日志表';
 
 create table ge_log_visit(
 	id int primary key auto_increment comment '编号',
@@ -389,7 +389,7 @@ create table ge_log_visit(
 	visit_url varchar(128) comment '访问url',
 	visit_time datetime comment '访问时间',
 	visit_times int comment '访问次数'
-) comment '访问日志表';
+) comment = '访问日志表';
 
 create table ge_log_error(
 	id int primary key auto_increment comment '编号',
@@ -398,4 +398,4 @@ create table ge_log_error(
 	err_time datetime comment '错误时间',
 	err_info varchar(256) comment '错误信息',
   user_type varchar(8) comment '用户类型'
-)comment '错误日志表';
+)comment = '错误日志表';
