@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeSubscriptionMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeSubscription">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="policy_id" jdbcType="INTEGER" property="policyId" />
+    <result column="subs_time" jdbcType="TIMESTAMP" property="subsTime" />
+    <result column="cancel_time" jdbcType="TIMESTAMP" property="cancelTime" />
+    <result column="subs_type" jdbcType="VARCHAR" property="subsType" />
+    <result column="policy_type" jdbcType="VARCHAR" property="policyType" />
+    <result column="subs_status" jdbcType="VARCHAR" property="subsStatus" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_subscription
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeSubscription">
+    insert into ge_subscription (id, user_id, policy_id, 
+      subs_time, cancel_time, subs_type, 
+      policy_type, subs_status)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{policyId,jdbcType=INTEGER}, 
+      #{subsTime,jdbcType=TIMESTAMP}, #{cancelTime,jdbcType=TIMESTAMP}, #{subsType,jdbcType=VARCHAR}, 
+      #{policyType,jdbcType=VARCHAR}, #{subsStatus,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeSubscription">
+    update ge_subscription
+    set user_id = #{userId,jdbcType=INTEGER},
+      policy_id = #{policyId,jdbcType=INTEGER},
+      subs_time = #{subsTime,jdbcType=TIMESTAMP},
+      cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      subs_type = #{subsType,jdbcType=VARCHAR},
+      policy_type = #{policyType,jdbcType=VARCHAR},
+      subs_status = #{subsStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, policy_id, subs_time, cancel_time, subs_type, policy_type, subs_status
+    from ge_subscription
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, policy_id, subs_time, cancel_time, subs_type, policy_type, subs_status
+    from ge_subscription
+  </select>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeCommentMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeComment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="policy_id" jdbcType="INTEGER" property="policyId" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
+    <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="policy_type" jdbcType="VARCHAR" property="policyType" />
+    <result column="comment_type" jdbcType="VARCHAR" property="commentType" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeComment">
+    insert into ge_comment (id, user_id, policy_id, 
+      comment_time, comment_content, policy_type, 
+      comment_type, operate_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{policyId,jdbcType=INTEGER}, 
+      #{commentTime,jdbcType=TIMESTAMP}, #{commentContent,jdbcType=VARCHAR}, #{policyType,jdbcType=VARCHAR}, 
+      #{commentType,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeComment">
+    update ge_comment
+    set user_id = #{userId,jdbcType=INTEGER},
+      policy_id = #{policyId,jdbcType=INTEGER},
+      comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_content = #{commentContent,jdbcType=VARCHAR},
+      policy_type = #{policyType,jdbcType=VARCHAR},
+      comment_type = #{commentType,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, policy_id, comment_time, comment_content, policy_type, comment_type, 
+    operate_time
+    from ge_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, policy_id, comment_time, comment_content, policy_type, comment_type, 
+    operate_time
+    from ge_comment
+  </select>
+</mapper>

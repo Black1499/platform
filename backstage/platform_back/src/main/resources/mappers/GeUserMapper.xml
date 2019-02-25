@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeUserMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="enterprise_id" jdbcType="INTEGER" property="enterpriseId" />
+    <result column="institution_id" jdbcType="INTEGER" property="institutionId" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="head_portrait" jdbcType="VARCHAR" property="headPortrait" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="parse_id" jdbcType="INTEGER" property="parseId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeUser">
+    insert into ge_user (id, enterprise_id, institution_id, 
+      number, password, contact, 
+      email, head_portrait, phone, 
+      remark, id_card, birthday, 
+      parse_id, status, type
+      )
+    values (#{id,jdbcType=INTEGER}, #{enterpriseId,jdbcType=INTEGER}, #{institutionId,jdbcType=INTEGER}, 
+      #{number,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{headPortrait,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{parseId,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeUser">
+    update ge_user
+    set enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      institution_id = #{institutionId,jdbcType=INTEGER},
+      number = #{number,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      parse_id = #{parseId,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, enterprise_id, institution_id, number, password, contact, email, head_portrait, 
+    phone, remark, id_card, birthday, parse_id, status, type
+    from ge_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, enterprise_id, institution_id, number, password, contact, email, head_portrait, 
+    phone, remark, id_card, birthday, parse_id, status, type
+    from ge_user
+  </select>
+</mapper>

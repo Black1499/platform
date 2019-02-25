@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeUpvoteMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeUpvote">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="policy_id" jdbcType="INTEGER" property="policyId" />
+    <result column="upvote_time" jdbcType="TIMESTAMP" property="upvoteTime" />
+    <result column="cancel_time" jdbcType="TIMESTAMP" property="cancelTime" />
+    <result column="upvote_type" jdbcType="VARCHAR" property="upvoteType" />
+    <result column="policy_type" jdbcType="VARCHAR" property="policyType" />
+    <result column="opearte_time" jdbcType="TIMESTAMP" property="opearteTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_upvote
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeUpvote">
+    insert into ge_upvote (id, user_id, policy_id, 
+      upvote_time, cancel_time, upvote_type, 
+      policy_type, opearte_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{policyId,jdbcType=INTEGER}, 
+      #{upvoteTime,jdbcType=TIMESTAMP}, #{cancelTime,jdbcType=TIMESTAMP}, #{upvoteType,jdbcType=VARCHAR}, 
+      #{policyType,jdbcType=VARCHAR}, #{opearteTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeUpvote">
+    update ge_upvote
+    set user_id = #{userId,jdbcType=INTEGER},
+      policy_id = #{policyId,jdbcType=INTEGER},
+      upvote_time = #{upvoteTime,jdbcType=TIMESTAMP},
+      cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      upvote_type = #{upvoteType,jdbcType=VARCHAR},
+      policy_type = #{policyType,jdbcType=VARCHAR},
+      opearte_time = #{opearteTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, policy_id, upvote_time, cancel_time, upvote_type, policy_type, 
+    opearte_time
+    from ge_upvote
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, policy_id, upvote_time, cancel_time, upvote_type, policy_type, 
+    opearte_time
+    from ge_upvote
+  </select>
+</mapper>

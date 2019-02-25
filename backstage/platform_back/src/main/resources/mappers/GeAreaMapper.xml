@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeAreaMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeArea">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="zipcode" jdbcType="VARCHAR" property="zipcode" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_area
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeArea">
+    insert into ge_area (id, area_name, code, 
+      zipcode, parent_id)
+    values (#{id,jdbcType=INTEGER}, #{areaName,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{zipcode,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeArea">
+    update ge_area
+    set area_name = #{areaName,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      zipcode = #{zipcode,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, area_name, code, zipcode, parent_id
+    from ge_area
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, area_name, code, zipcode, parent_id
+    from ge_area
+  </select>
+</mapper>

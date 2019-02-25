@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.PolicyCompliantScaleMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.PolicyCompliantScale">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="enterprise_scale_id" jdbcType="INTEGER" property="enterpriseScaleId" />
+    <result column="policy_id" jdbcType="INTEGER" property="policyId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from policy_compliant_scale
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.PolicyCompliantScale">
+    insert into policy_compliant_scale (id, enterprise_scale_id, policy_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{enterpriseScaleId,jdbcType=INTEGER}, #{policyId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.PolicyCompliantScale">
+    update policy_compliant_scale
+    set enterprise_scale_id = #{enterpriseScaleId,jdbcType=INTEGER},
+      policy_id = #{policyId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, enterprise_scale_id, policy_id
+    from policy_compliant_scale
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, enterprise_scale_id, policy_id
+    from policy_compliant_scale
+  </select>
+</mapper>

@@ -4,7 +4,9 @@
 - backstage：主要存放后台代码
 - db：主要存放sql文件
 - doc：主要存放项目相关文档
-- frontend：主要存放前端项目
+- frontend：主要存放前端项目	
+- vue-web-portal:门户网站界面
+- vue-web-manage:后台管理界面
 
 ### testdb.sql文件说明
 

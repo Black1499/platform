@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GePolicyMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GePolicy">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="policy_detail_id" jdbcType="INTEGER" property="policyDetailId" />
+    <result column="key_word" jdbcType="VARCHAR" property="keyWord" />
+    <result column="declaration_url" jdbcType="VARCHAR" property="declarationUrl" />
+    <result column="policy_type" jdbcType="VARCHAR" property="policyType" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="comment_times" jdbcType="INTEGER" property="commentTimes" />
+    <result column="shared_times" jdbcType="INTEGER" property="sharedTimes" />
+    <result column="upvote_times" jdbcType="INTEGER" property="upvoteTimes" />
+    <result column="favor_times" jdbcType="INTEGER" property="favorTimes" />
+    <result column="readed_times" jdbcType="INTEGER" property="readedTimes" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_policy
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GePolicy">
+    insert into ge_policy (id, policy_detail_id, key_word, 
+      declaration_url, policy_type, area_id, 
+      comment_times, shared_times, upvote_times, 
+      favor_times, readed_times, created_time, 
+      updated_time)
+    values (#{id,jdbcType=INTEGER}, #{policyDetailId,jdbcType=INTEGER}, #{keyWord,jdbcType=VARCHAR}, 
+      #{declarationUrl,jdbcType=VARCHAR}, #{policyType,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, 
+      #{commentTimes,jdbcType=INTEGER}, #{sharedTimes,jdbcType=INTEGER}, #{upvoteTimes,jdbcType=INTEGER}, 
+      #{favorTimes,jdbcType=INTEGER}, #{readedTimes,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GePolicy">
+    update ge_policy
+    set policy_detail_id = #{policyDetailId,jdbcType=INTEGER},
+      key_word = #{keyWord,jdbcType=VARCHAR},
+      declaration_url = #{declarationUrl,jdbcType=VARCHAR},
+      policy_type = #{policyType,jdbcType=VARCHAR},
+      area_id = #{areaId,jdbcType=INTEGER},
+      comment_times = #{commentTimes,jdbcType=INTEGER},
+      shared_times = #{sharedTimes,jdbcType=INTEGER},
+      upvote_times = #{upvoteTimes,jdbcType=INTEGER},
+      favor_times = #{favorTimes,jdbcType=INTEGER},
+      readed_times = #{readedTimes,jdbcType=INTEGER},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, policy_detail_id, key_word, declaration_url, policy_type, area_id, comment_times, 
+    shared_times, upvote_times, favor_times, readed_times, created_time, updated_time
+    from ge_policy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, policy_detail_id, key_word, declaration_url, policy_type, area_id, comment_times, 
+    shared_times, upvote_times, favor_times, readed_times, created_time, updated_time
+    from ge_policy
+  </select>
+</mapper>

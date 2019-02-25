@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeEnterpriseMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeEnterprise">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="registration_number" jdbcType="VARCHAR" property="registrationNumber" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="representative_people" jdbcType="VARCHAR" property="representativePeople" />
+    <result column="registed_captital" jdbcType="DECIMAL" property="registedCaptital" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="registed_office" jdbcType="VARCHAR" property="registedOffice" />
+    <result column="registed_time" jdbcType="TIMESTAMP" property="registedTime" />
+    <result column="registed_status" jdbcType="VARCHAR" property="registedStatus" />
+    <result column="founded_time" jdbcType="TIMESTAMP" property="foundedTime" />
+    <result column="approved_time" jdbcType="TIMESTAMP" property="approvedTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_enterprise
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeEnterprise">
+    insert into ge_enterprise (id, registration_number, name, 
+      address, representative_people, registed_captital, 
+      phone_number, registed_office, registed_time, 
+      registed_status, founded_time, approved_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{registrationNumber,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{representativePeople,jdbcType=VARCHAR}, #{registedCaptital,jdbcType=DECIMAL}, 
+      #{phoneNumber,jdbcType=VARCHAR}, #{registedOffice,jdbcType=VARCHAR}, #{registedTime,jdbcType=TIMESTAMP}, 
+      #{registedStatus,jdbcType=VARCHAR}, #{foundedTime,jdbcType=TIMESTAMP}, #{approvedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeEnterprise">
+    update ge_enterprise
+    set registration_number = #{registrationNumber,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      representative_people = #{representativePeople,jdbcType=VARCHAR},
+      registed_captital = #{registedCaptital,jdbcType=DECIMAL},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      registed_office = #{registedOffice,jdbcType=VARCHAR},
+      registed_time = #{registedTime,jdbcType=TIMESTAMP},
+      registed_status = #{registedStatus,jdbcType=VARCHAR},
+      founded_time = #{foundedTime,jdbcType=TIMESTAMP},
+      approved_time = #{approvedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, registration_number, name, address, representative_people, registed_captital, 
+    phone_number, registed_office, registed_time, registed_status, founded_time, approved_time
+    from ge_enterprise
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, registration_number, name, address, representative_people, registed_captital, 
+    phone_number, registed_office, registed_time, registed_status, founded_time, approved_time
+    from ge_enterprise
+  </select>
+</mapper>

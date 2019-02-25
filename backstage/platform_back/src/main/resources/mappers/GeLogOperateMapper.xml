@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeLogOperateMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeLogOperate">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="opearte_time" jdbcType="TIMESTAMP" property="opearteTime" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="record" jdbcType="VARCHAR" property="record" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_log_operate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeLogOperate">
+    insert into ge_log_operate (id, opearte_time, user_id, 
+      record, user_type)
+    values (#{id,jdbcType=INTEGER}, #{opearteTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, 
+      #{record,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeLogOperate">
+    update ge_log_operate
+    set opearte_time = #{opearteTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER},
+      record = #{record,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, opearte_time, user_id, record, user_type
+    from ge_log_operate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, opearte_time, user_id, record, user_type
+    from ge_log_operate
+  </select>
+</mapper>

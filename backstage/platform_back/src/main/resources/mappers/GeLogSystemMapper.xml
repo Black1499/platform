@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeLogSystemMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeLogSystem">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="error_time" jdbcType="TIMESTAMP" property="errorTime" />
+    <result column="process_time" jdbcType="TIMESTAMP" property="processTime" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_log_system
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeLogSystem">
+    insert into ge_log_system (id, type, status, 
+      error_time, process_time, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{errorTime,jdbcType=TIMESTAMP}, #{processTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeLogSystem">
+    update ge_log_system
+    set type = #{type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      error_time = #{errorTime,jdbcType=TIMESTAMP},
+      process_time = #{processTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, type, status, error_time, process_time, content
+    from ge_log_system
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, type, status, error_time, process_time, content
+    from ge_log_system
+  </select>
+</mapper>

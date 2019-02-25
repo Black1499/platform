@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeShareMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeShare">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="policy_id" jdbcType="INTEGER" property="policyId" />
+    <result column="shared_time" jdbcType="TIMESTAMP" property="sharedTime" />
+    <result column="policy_type" jdbcType="VARCHAR" property="policyType" />
+    <result column="shared_type" jdbcType="VARCHAR" property="sharedType" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_share
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeShare">
+    insert into ge_share (id, user_id, policy_id, 
+      shared_time, policy_type, shared_type, 
+      operate_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{policyId,jdbcType=INTEGER}, 
+      #{sharedTime,jdbcType=TIMESTAMP}, #{policyType,jdbcType=VARCHAR}, #{sharedType,jdbcType=VARCHAR}, 
+      #{operateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeShare">
+    update ge_share
+    set user_id = #{userId,jdbcType=INTEGER},
+      policy_id = #{policyId,jdbcType=INTEGER},
+      shared_time = #{sharedTime,jdbcType=TIMESTAMP},
+      policy_type = #{policyType,jdbcType=VARCHAR},
+      shared_type = #{sharedType,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, policy_id, shared_time, policy_type, shared_type, operate_time
+    from ge_share
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, policy_id, shared_time, policy_type, shared_type, operate_time
+    from ge_share
+  </select>
+</mapper>

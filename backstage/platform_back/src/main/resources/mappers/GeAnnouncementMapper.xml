@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeAnnouncementMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeAnnouncement">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="subtitle" jdbcType="VARCHAR" property="subtitle" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="editor" jdbcType="VARCHAR" property="editor" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+    <result column="release_organization" jdbcType="VARCHAR" property="releaseOrganization" />
+    <result column="readed_times" jdbcType="INTEGER" property="readedTimes" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_announcement
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeAnnouncement">
+    insert into ge_announcement (id, title, subtitle, 
+      author, editor, release_time, 
+      release_organization, readed_times, status, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{subtitle,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{editor,jdbcType=VARCHAR}, #{releaseTime,jdbcType=TIMESTAMP}, 
+      #{releaseOrganization,jdbcType=VARCHAR}, #{readedTimes,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeAnnouncement">
+    update ge_announcement
+    set title = #{title,jdbcType=VARCHAR},
+      subtitle = #{subtitle,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      editor = #{editor,jdbcType=VARCHAR},
+      release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      release_organization = #{releaseOrganization,jdbcType=VARCHAR},
+      readed_times = #{readedTimes,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, title, subtitle, author, editor, release_time, release_organization, readed_times, 
+    status, content
+    from ge_announcement
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, title, subtitle, author, editor, release_time, release_organization, readed_times, 
+    status, content
+    from ge_announcement
+  </select>
+</mapper>

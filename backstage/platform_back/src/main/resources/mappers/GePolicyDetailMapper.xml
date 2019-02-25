@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GePolicyDetailMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GePolicyDetail">
+    <id column="did" jdbcType="INTEGER" property="id" />
+    <result column="policy_raw_id" jdbcType="INTEGER" property="policyRawId" />
+    <result column="index_number" jdbcType="VARCHAR" property="indexNumber" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="release_office" jdbcType="VARCHAR" property="releaseOffice" />
+    <result column="release_number" jdbcType="VARCHAR" property="releaseNumber" />
+    <result column="policy_basis" jdbcType="VARCHAR" property="policyBasis" />
+    <result column="wiritten_time" jdbcType="TIMESTAMP" property="wirittenTime" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+    <result column="effect_time" jdbcType="TIMESTAMP" property="effectTime" />
+    <result column="dKeyWord" jdbcType="VARCHAR" property="keyWord" />
+    <result column="impement_subject" jdbcType="VARCHAR" property="impementSubject" />
+    <result column="direct_impement_subject" jdbcType="VARCHAR" property="directImpementSubject" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="dCreateTime" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="dUpDatedTime" jdbcType="TIMESTAMP" property="updatedTime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+
+
+    <association javaType="com.nf147.platform.entity.GePolicy" property="gePolicy" column="id">
+      <id column="pid" jdbcType="INTEGER" property="id" />
+      <result column="policy_detail_id" jdbcType="INTEGER" property="policyDetailId" />
+      <result column="pKeyWord" jdbcType="VARCHAR" property="keyWord" />
+      <result column="declaration_url" jdbcType="VARCHAR" property="declarationUrl" />
+      <result column="policy_type" jdbcType="VARCHAR" property="policyType" />
+      <result column="area_id" jdbcType="INTEGER" property="areaId" />
+      <result column="comment_times" jdbcType="INTEGER" property="commentTimes" />
+      <result column="shared_times" jdbcType="INTEGER" property="sharedTimes" />
+      <result column="upvote_times" jdbcType="INTEGER" property="upvoteTimes" />
+      <result column="favor_times" jdbcType="INTEGER" property="favorTimes" />
+      <result column="readed_times" jdbcType="INTEGER" property="readedTimes" />
+      <result column="pCreatedTime" jdbcType="TIMESTAMP" property="createdTime" />
+      <result column="pUpDatedTime" jdbcType="TIMESTAMP" property="updatedTime" />
+    </association>
+  </resultMap>
+
+  <sql id="detail">
+    d.id did, d.policy_raw_id, d.index_number, d.title, d.release_office, d.release_number, d.policy_basis,
+    d.wiritten_time, d.release_time, d.effect_time, d.key_word dKeyWord, d.impement_subject, d.direct_impement_subject,
+    d.image_url, d.created_time dCreateTime, d.updated_time dUpDatedTime, d.status, d.content
+  </sql>
+
+  <sql id="policy">
+      p.id pid, p.policy_detail_id, p.key_word pKeyWord,
+      p.declaration_url, p.policy_type, p.area_id,
+      p.comment_times, p.shared_times, p.upvote_times,
+      p.favor_times, p.readed_times, p.created_time pCreatedTime,
+      p.updated_time pUpDatedTime
+  </sql>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_policy_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GePolicyDetail" useGeneratedKeys="true" keyColumn="id"
+  >
+    insert into ge_policy_detail (id, policy_raw_id, index_number, 
+      title, release_office, release_number, 
+      policy_basis, wiritten_time, release_time, 
+      effect_time, key_word, impement_subject, 
+      direct_impement_subject, image_url, created_time, 
+      updated_time, status, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{policyRawId,jdbcType=INTEGER}, #{indexNumber,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{releaseOffice,jdbcType=VARCHAR}, #{releaseNumber,jdbcType=VARCHAR}, 
+      #{policyBasis,jdbcType=VARCHAR}, #{wirittenTime,jdbcType=TIMESTAMP}, #{releaseTime,jdbcType=TIMESTAMP}, 
+      #{effectTime,jdbcType=TIMESTAMP}, #{keyWord,jdbcType=VARCHAR}, #{impementSubject,jdbcType=VARCHAR}, 
+      #{directImpementSubject,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GePolicyDetail">
+    update ge_policy_detail
+    set
+      <if test="policyRawId != ''">policy_raw_id = #{policyRawId,jdbcType=INTEGER}</if>,
+      <if test="indexNumber != ''">index_number = #{indexNumber,jdbcType=VARCHAR}</if>,
+      <if test="title != ''">title = #{title,jdbcType=VARCHAR}</if>,
+      <if test="releaseOffice != ''">release_office = #{releaseOffice,jdbcType=VARCHAR}</if>,
+      <if test="releaseNumber != ''">release_number = #{releaseNumber,jdbcType=VARCHAR}</if>,
+      <if test="policyBasis != ''">policy_basis = #{policyBasis,jdbcType=VARCHAR}</if>,
+      <if test="wirittenTime != ''">wiritten_time = #{wirittenTime,jdbcType=TIMESTAMP}</if>,
+      <if test="releaseTime != ''">release_time = #{releaseTime,jdbcType=TIMESTAMP}</if>,
+      <if test="effectTime != ''">effect_time = #{effectTime,jdbcType=TIMESTAMP}</if>,
+      <if test="keyWord != ''">key_word = #{keyWord,jdbcType=VARCHAR}</if>,
+      <if test="impementSubject != ''">impement_subject = #{impementSubject,jdbcType=VARCHAR}</if>,
+      <if test="directImpementSubject != ''">direct_impement_subject = #{directImpementSubject,jdbcType=VARCHAR}</if>,
+      <if test="imageUrl != ''">image_url = #{imageUrl,jdbcType=VARCHAR}</if>,
+      <if test="createdTime != ''">created_time = #{createdTime,jdbcType=TIMESTAMP}</if>,
+      <if test="updatedTime != ''">updated_time = #{updatedTime,jdbcType=TIMESTAMP}</if>,
+      <if test="status != ''">status = #{status,jdbcType=VARCHAR}</if>,
+      <if test="content != ''">content = #{content,jdbcType=LONGVARCHAR}</if>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--修改政策状态-->
+  <update id="updataDetailStatus" parameterType="com.nf147.platform.entity.GePolicyDetail">
+    update ge_policy_detail
+    set
+      <if test="status != null">status = #{status,jdbcType=VARCHAR }</if>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+      <include refid="detail"/>
+    from ge_policy_detail d
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="detail"/>,
+    <include refid="policy"/>
+    from ge_policy_detail d left join ge_policy p on d.id = p.policy_detail_id
+  </select>
+
+  <!--分页查询-->
+  <select id="findByPage" resultMap="BaseResultMap">
+    select
+    <include refid="detail"/>,
+    <include refid="policy"/>
+    from ge_policy_detail d left join ge_policy p on d.id = p.policy_detail_id limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+</mapper>

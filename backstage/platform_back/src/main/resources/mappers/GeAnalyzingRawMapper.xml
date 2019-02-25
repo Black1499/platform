@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.platform.dao.GeAnalyzingRawMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.platform.entity.GeAnalyzingRaw">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="policy_raw_id" jdbcType="INTEGER" property="policyRawId" />
+    <result column="crawl_url" jdbcType="VARCHAR" property="crawlUrl" />
+    <result column="local_path" jdbcType="VARCHAR" property="localPath" />
+    <result column="crawl_time" jdbcType="TIMESTAMP" property="crawlTime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_analyzing_raw
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nf147.platform.entity.GeAnalyzingRaw">
+    insert into ge_analyzing_raw (id, policy_raw_id, crawl_url, 
+      local_path, crawl_time, status, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{policyRawId,jdbcType=INTEGER}, #{crawlUrl,jdbcType=VARCHAR}, 
+      #{localPath,jdbcType=VARCHAR}, #{crawlTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeAnalyzingRaw">
+    update ge_analyzing_raw
+    set policy_raw_id = #{policyRawId,jdbcType=INTEGER},
+      crawl_url = #{crawlUrl,jdbcType=VARCHAR},
+      local_path = #{localPath,jdbcType=VARCHAR},
+      crawl_time = #{crawlTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, policy_raw_id, crawl_url, local_path, crawl_time, status, content
+    from ge_analyzing_raw
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, policy_raw_id, crawl_url, local_path, crawl_time, status, content
+    from ge_analyzing_raw
+  </select>
+</mapper>
