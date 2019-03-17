@@ -1,5 +1,7 @@
 package com.nf147.platform.entity;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import java.util.Date;
 
 public class GeUser {
@@ -11,6 +13,7 @@ public class GeUser {
 
     private String number;
 
+    @Ignore
     private String password;
 
     private String contact;
@@ -32,6 +35,26 @@ public class GeUser {
     private String status;
 
     private String type;
+
+    private int roleId;
+
+    private GeRole role;
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public GeRole getRole() {
+        return role;
+    }
+
+    public void setRole(GeRole role) {
+        this.role = role;
+    }
 
     public Integer getId() {
         return id;

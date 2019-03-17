@@ -11,30 +11,78 @@
 						<router-link :to="{path:'/home'}">政策</router-link>
 					</el-breadcrumb-item>
 					<el-breadcrumb-item>
+						<router-link :to="{path:'/home'}">诉求</router-link>
+					</el-breadcrumb-item>
+                    <el-breadcrumb-item>
 						<router-link :to="{path:'/son'}">企业</router-link>
 					</el-breadcrumb-item>
 					<el-breadcrumb-item>
-						<router-link :to="{path:'/home'}">登录</router-link>
+						<a @click="dialogFormVisible = true">登录</a>	
+						<el-dialog title="用户登录" :visible.sync="dialogFormVisible" width="40%" customClass="customheight">
+							<hr style="margin-top: -2em;" />
+							<el-form :model="form" class="sss">
+								<div style="margin-right:3em;">
+									<el-form-item label="用户名:" :label-width="formLabelWidth">
+										<el-input v-model="form.name" autocomplete="off" placeholder="请输入用户名"></el-input>
+									</el-form-item>
+									<el-form-item label="密码:" :label-width="formLabelWidth">
+										<el-input v-model="form.password" autocomplete="off" placeholder="请输入密码"></el-input>
+										</el-select>
+									</el-form-item>
+								</div>
+
+							</el-form>
+							<div slot="footer" class="dialog-footer" style="text-align: center;">
+								<el-button type="primary" @click="dialogFormVisible = false">立 即 登 录</el-button>
+							</div>
+						</el-dialog>
+
 					</el-breadcrumb-item>
 					<el-breadcrumb-item></el-breadcrumb-item>
 				</el-breadcrumb>
 			</el-header>
 			<el-main>
-					<img src="../assets/uugai.com_1547534130625.png" width="450px" height="100px" style="margin-top: 30px;" /><br/>
-					<el-input v-model="input" style="width: 600px;"></el-input>
-					<el-button type="primary" icon="el-icon-search" style="background-color: #409EFF;border: 1px solid #409EFF;">搜索</el-button>
+				<img src="../assets/uugai.com_1547534130625.png" width="450px" height="100px" style="margin-top: 30px;" /><br />
+				<el-input v-model="input" style="width: 600px;"></el-input>
+                <router-link :to="{name:'policylist'}" >
+                    <el-button type="primary" icon="el-icon-search" style="background-color: #409EFF;border: 1px solid #409EFF;">搜索</el-button>
+                </router-link>
+				
 			</el-main>
 		</el-container>
 
 	</div>
 </template>
 
+
+<script>
+	export default {
+		data() {
+			return {
+				dialogFormVisible: false,
+				form: {
+					name: '',
+					region: '',
+					date1: '',
+					date2: '',
+					delivery: false,
+					type: [],
+					resource: '',
+					desc: ''
+				},
+				formLabelWidth: '120px'
+			};
+		}
+	};
+</script>
+
+
+
 <style>
 	body {
 		margin: 0;
 		padding: 0;
 	}
-
 	.el-header,
 	.el-footer {
 		/* background-color: #B3C0D1; */

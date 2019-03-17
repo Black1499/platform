@@ -15,6 +15,24 @@ public class GeLogVisit {
 
     private Integer visitTimes;
 
+    public GeLogVisit() {
+    }
+
+    public GeLogVisit(Integer userId, String ip, String visitUrl, Date visitTime, Integer visitTimes) {
+        this.userId = userId;
+        this.ip = ip;
+        this.visitUrl = visitUrl;
+        this.visitTime = visitTime;
+        this.visitTimes = visitTimes;
+    }
+
+    public GeLogVisit(String ip, String visitUrl, Date visitTime, Integer visitTimes) {
+        this.ip = ip;
+        this.visitUrl = visitUrl;
+        this.visitTime = visitTime;
+        this.visitTimes = visitTimes;
+    }
+
     public Integer getId() {
         return id;
     }

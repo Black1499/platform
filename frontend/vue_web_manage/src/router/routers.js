@@ -184,7 +184,7 @@ export default [
 	  children: [
 	    {
 	      path: 'user_management',
-	      name: '用户管理',
+	      name: 'user_management',
 	      meta: {
 	        icon: 'md-contacts',
 	        title: '用户管理'
@@ -193,7 +193,7 @@ export default [
 	    },
 	   {
 	     path: 'authority_control',
-	     name: '权限控制',
+	     name: 'authority_control',
 	     meta: {
 	       icon: 'ios-key-outline',
 	       title: '权限控制'
@@ -240,7 +240,80 @@ export default [
 		 },
 		]
 	},
-	
+	{
+	  path: '/shared-data',
+	  name: '共享数据管理',
+	  meta: {
+	    icon: 'ios-menu',
+	    title: '共享数据管理'
+	  },
+	  component: Main,
+	  children: [
+	    {
+	      path: 'ge_industry',
+	      name: '国民经济',
+	      meta: {
+	        icon: 'logo-usd',
+	        title: '国民经济'
+	      },
+	      component: () => import('@/view/shared_data/ge_industry.vue')
+	    },
+	   {
+	     path: 'policy_category',
+	     name: '政策类型',
+	     meta: {
+	       icon: 'ios-brush-outline',
+	       title: '政策类型'
+	     },
+	     component: () => import('@/view/shared_data/policy_category.vue')
+	   },
+		 {
+		   path: 'enterprise_category',
+		   name: '企业类型',
+		   meta: {
+		     icon: 'md-checkbox-outline',
+		     title: '企业类型'
+		   },
+		   component: () => import('@/view/shared_data/enterprise_category.vue')
+		 },
+		 {
+		   path: 'enterprise_nature',
+		   name: '企业性质',
+		   meta: {
+		     icon: 'md-checkbox-outline',
+		     title: '企业性质'
+		   },
+		   component: () => import('@/view/shared_data/enterprise_nature.vue')
+		 },
+		 {
+		   path: 'enterprise_scale',
+		   name: '企业规模',
+		   meta: {
+		     icon: 'md-checkbox-outline',
+		     title: '企业规模'
+		   },
+		   component: () => import('@/view/shared_data/enterprise_scale.vue')
+		 },
+		 {
+		   path: 'education_category',
+		   name: '学历类型',
+		   meta: {
+		     icon: 'md-checkbox-outline',
+		     title: '学历类型'
+		   },
+		   component: () => import('@/view/shared_data/education_category.vue')
+		 },
+		 {
+		   path: 'government_institutions',
+		   name: '政府事业单位',
+		   meta: {
+		     icon: 'md-checkbox-outline',
+		     title: '政府事业单位'
+		   },
+		   component: () => import('@/view/shared_data/government_institutions.vue')
+		 },
+		]
+	},
 	{
 	  path: '/data_management',
 	  name: '数据管理',

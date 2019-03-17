@@ -17,7 +17,10 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/testdb
+    #url: jdbc:mariadb://localhost:3306/testdb
+    #username: root
+    #password: 123456
+    url: jdbc:mariadb://localhost:3306/policydb
     username: root
     password: 123456
     # 数据库连接池
@@ -33,3 +36,6 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+# 端口设置
+server:
+  port: 8888

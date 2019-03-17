@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import './plugins/axios'
 import App from './App'
 import router from './router'
 import store from './store'
@@ -15,6 +16,9 @@ import '@/assets/icons/iconfont.css'
 import TreeTable from 'tree-table-vue'
 import VOrgTree from 'v-org-tree'
 import 'v-org-tree/dist/v-org-tree.css'
+
+import Axios from 'axios'
+
 // 实际打包时应该不引入mock
 /* eslint-disable */
 if (process.env.NODE_ENV !== 'production') require('@/mock')
@@ -24,6 +28,7 @@ Vue.use(iView, {
 })
 Vue.use(TreeTable)
 Vue.use(VOrgTree)
+Vue.use(Axios)
 /**
  * @description 注册admin内置插件
  */
@@ -50,3 +55,10 @@ new Vue({
   store,
   render: h => h(App)
 })
+
+Vue.prototype.$http = Axios;
+  
+Axios.defaults.baseURL = "http://localhost:8888"; 
+Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+Vue.config.productionTip = false;
+Vue.prototype.$addr = Axios;

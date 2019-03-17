@@ -1,29 +1,19 @@
-# vue_web_portal
+# 门户网站
 
-## Project setup
+## 项目安装
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 热部署（开启服务）
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 编译、部署项目
 ```
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

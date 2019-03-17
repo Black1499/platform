@@ -42,4 +42,39 @@ public class GePolicyServiceImpl implements GePolicyService {
     public int updateByPrimaryKey(GePolicy record) {
         return gePolicyMapper.updateByPrimaryKey(record);
     }
+
+    /**
+     * lgj
+     * // TODO: 2019/2/18
+     *修改收藏数
+     */
+    @Override
+    public int updateByFavor(Integer id) {
+        return gePolicyMapper.updateByFavor(id);
+    }
+
+    /**
+     * lgj
+     * // TODO: 2019/2/18
+     *修改评论数
+     */
+    @Override
+    public int updateByComment(Integer id) {
+        return gePolicyMapper.updateByComment(id);
+    }
+
+    @Override
+    public int updataReadedTimes(Integer policyId) {
+        return gePolicyMapper.updataReadedTimes(policyId);
+    }
+
+    @Override
+    public int updataShareTimes(Integer policyId) {
+        return gePolicyMapper.updataShareTimes(policyId);
+    }
+
+    @Override
+    public int updatUpvoteTimes(Integer policyId) {
+        return gePolicyMapper.updatUpvoteTimes(policyId);
+    }
 }

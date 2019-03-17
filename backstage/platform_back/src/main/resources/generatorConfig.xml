@@ -12,7 +12,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="org.mariadb.jdbc.Driver"
-                        connectionURL="jdbc:mariadb://localhost/testdb"
+                        connectionURL="jdbc:mariadb://localhost:3306/policydb"
                         userId="root"
                         password="123456">
         </jdbcConnection>

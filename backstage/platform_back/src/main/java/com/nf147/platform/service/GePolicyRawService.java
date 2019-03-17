@@ -17,4 +17,6 @@ public interface GePolicyRawService {
     int updataRawStatus(@Param("status") String status, @Param("id") int id);
 
     List<GePolicyRaw> findByPage(int start, int pageSize);
+
+    List<GePolicyRaw> getById(Integer id);
 }

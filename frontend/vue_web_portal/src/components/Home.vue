@@ -1,4 +1,5 @@
 <template>
+	
 	<!-- 二级页面的汇总 -->
 	<div class="home">
 		<el-container>
@@ -20,20 +21,39 @@
 									<el-button slot="append" icon="el-icon-search"></el-button>
 								</template>
 							</el-input>
-							<router-link :to="{name:'login'}">登录/</router-link>
-							<router-link :to="{name:'register'}">注册</router-link>
-						</div>
+							<!-- <router-link :to="{name:'login'}">登录/</router-link> -->
+							
+							<a class="aLoign" @click="dialogFormVisible = true">登录</a> /
+							<el-dialog title="用户登录" style="line-height: 10px;" :visible.sync="dialogFormVisible" width="40%" customClass="customheight">
+								<hr style="margin-top: -2em;" />
+								<el-form :model="form" class="sss">
+									<div style="margin-right:3em;">
+										<el-form-item label="用户名:" :label-width="formLabelWidth">
+											<el-input v-model="form.name" autocomplete="off" placeholder="请输入用户名"></el-input>
+										</el-form-item>
+										<el-form-item label="密码:" :label-width="formLabelWidth">
+											<el-input v-model="form.password" autocomplete="off" placeholder="请输入密码"></el-input>
+											</el-select>
+										</el-form-item>
+									</div>
 
+								</el-form>
+								<div slot="footer" class="dialog-footer" style="text-align: center;">
+									<el-button type="primary" @click="dialogFormVisible = false">立 即 登 录</el-button>
+								</div>
+							</el-dialog>
+							
+							<router-link :to="{name:'register'}">注册</router-link>
+
+						</div>
 					</el-col>
 				</el-row>
 			</el-header>
-
 			<!-- 导航 -->
 			<NavMenu></NavMenu>
 
-
-			<!-- 各个页面 -->
 			<el-main>
+				<!-- 各个页面 -->
 				<router-view />
 			</el-main>
 		</el-container>
@@ -44,14 +64,37 @@
 	import NavMenu from '../components/NavMenu.vue'
 	export default {
 		name: 'home',
+		data() {
+			return {
+				dialogFormVisible: false,
+				form: {
+					name: '',
+					region: '',
+					date1: '',
+					date2: '',
+					delivery: false,
+					type: [],
+					resource: '',
+					desc: ''
+				},
+				formLabelWidth: '120px'
+			};
+		},
 		components: {
 			NavMenu: NavMenu
-		}
+		},
 	}
 </script>
 <style>
 	a {
 		text-decoration: none
+	}
+	
+	.aLoign{
+		cursor: pointer;
+	}
+	.aLoign:active{
+		color: red; 
 	}
 
 	.searchClass {

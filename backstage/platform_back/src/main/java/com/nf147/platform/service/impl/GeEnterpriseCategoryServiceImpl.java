@@ -1,7 +1,9 @@
 package com.nf147.platform.service.impl;
 
+import com.nf147.platform.dao.GeEnterpriseCategoryMapper;
 import com.nf147.platform.entity.GeEnterpriseCategory;
 import com.nf147.platform.service.GeEnterpriseCategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,28 +15,30 @@ import java.util.List;
  */
 @Service
 public class GeEnterpriseCategoryServiceImpl implements GeEnterpriseCategoryService {
+    @Autowired
+    private GeEnterpriseCategoryMapper categoryMapper;
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return 0;
+        return categoryMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public int insert(GeEnterpriseCategory record) {
-        return 0;
+        return categoryMapper.insert(record);
     }
 
     @Override
     public GeEnterpriseCategory selectByPrimaryKey(Integer id) {
-        return null;
+        return categoryMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public List<GeEnterpriseCategory> selectAll() {
-        return null;
+        return categoryMapper.selectAll();
     }
 
     @Override
     public int updateByPrimaryKey(GeEnterpriseCategory record) {
-        return 0;
+        return categoryMapper.updateByPrimaryKey(record);
     }
 }

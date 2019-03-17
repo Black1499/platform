@@ -8,59 +8,70 @@ import Atlas from './components/Atlas.vue'
 import Declare from './components/Declare.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
+import PolicyList from './components/PolicyList.vue'
 import Son from './components/son.vue'
 import Subscribe from './components/Subscribe.vue'
+import PolicyDetail from './components/policyDetails.vue'
 
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes: [
-        {
-            path: '/',
-            name: 'app',
-            component: App
-        },
-        {
-            // 针对vue-router子路由默认视图不显示这个问题，要有默认子路由，那父路由的名字name得去掉
-            path: '/home',
-            component: Home,
-            children: [
-                {
-                    path: '/',
-                    name: 'notice',
-                    component: Notice
-                }, {
-                    path: '/notice',
-                    name: 'notice',
-                    component: Notice
-                }, {
-                    path: '/policy',
-                    name: 'policy',
-                    component: Policy
-                }, {
-                    path: '/atlas',
-                    name: 'atlas',
-                    component: Atlas
-                }, {
-                    path: '/declare',
-                    name: 'declare',
-                    component: Declare
-                }
-
-            ]
-        },
-        {
-            path: '/login',
-            name: 'login',
-            component: Login
-        },
-        {
-            path: '/register',
-            name: 'register',
-            component: Register
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes: [
+		{
+			path:'/',
+			name: 'app',
+			component: App
+		},
+		{
+			// 针对vue-router子路由默认视图不显示这个问题，要有默认子路由，那父路由的名字name得去掉
+			path: '/home',
+			component: Home,
+			children:[
+				{
+					path: '/',
+					name: 'notice',
+					component: Notice
+				}, {
+					path: '/notice',
+					name: 'notice',
+					component: Notice
+				}, {
+					path: '/policy',
+					name: 'policy',
+					component: Policy
+				}, {
+					path: '/atlas',
+					name: 'atlas',
+					component: Atlas
+				}, {
+					path: '/declare',
+					name: 'declare',
+					component: Declare
+				}
+				
+			]
+		},
+		{
+			path:'/login',
+			name:'login',
+			component:Login
+		},
+		{
+			path:'/register',
+			name:'register',
+			component:Register
         }, {
+            path: '/policylist',
+            name: 'policylist',
+            component: PolicyList
+        }, {
+            path: '/policyDetail',
+            name: 'policyDetail',
+            component: PolicyDetail
+        }
+        , {
             path: '/son',
             name: 'son',
             component: Son,
@@ -73,7 +84,6 @@ export default new Router({
                     }
                 ]
         }
-
-    ]
+	]
 })
 

@@ -83,4 +83,14 @@ public class GePolicyRawServiceImpl implements GePolicyRawService {
         List <GePolicyRaw> gePolicyRaws = gePolicyRawMapper.findByPage((start-1)*pageSize, pageSize);
         return gePolicyRaws;
     }
+
+    /**
+     * 按id查询原始政策表
+     * // TODO: 2019/2/21
+     * @return
+     */
+    @Override
+    public List <GePolicyRaw> getById(Integer id) {
+        return gePolicyRawMapper.getById(id);
+    }
 }

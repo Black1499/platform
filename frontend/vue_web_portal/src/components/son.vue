@@ -57,7 +57,7 @@
 	}
 
 	.el-header {
-		background-color: darkblue;
+	
 		text-align: center;
 		line-height: 40px;
 	}

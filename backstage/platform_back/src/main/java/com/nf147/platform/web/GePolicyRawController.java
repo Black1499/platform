@@ -1,5 +1,6 @@
 package com.nf147.platform.web;
 
+import com.nf147.platform.entity.GePolicyRaw;
 import com.nf147.platform.service.impl.GePolicyRawServiceImpl;
 import com.nf147.platform.util.response.Constants;
 import com.nf147.platform.util.response.JSONResponse;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author 张东明
@@ -49,8 +52,27 @@ public class GePolicyRawController {
             if (status != null && status != "" && id > 0) {
                 int i = gePolicyRawService.updataRawStatus(status, id);
                 if (i > 0) {
-                    return JSONResponse.OK(Constants.SUCCESS_200,i);
+                    return JSONResponse.OK(Constants.SUCCESS_200, i);
                 }
+            }
+        } catch (MyBatisSystemException ex) {
+            return JSONResponse.ERROR(Constants.ERROR_500, ex.getMessage());
+        } catch (Exception ex) {
+            return JSONResponse.ERROR(Constants.ERROR_408, ex.getMessage());
+        }
+        return JSONResponse.ERROR(Constants.SUCCESS_202);
+    }
+
+    /**
+     * @info /policy/raw/selectByPrimaryKey/{id}按id查询原始政策信息
+     * @remark √
+     */
+    @GetMapping("/policy/raw/selectByPrimaryKey/{id}")
+    public JSONResponse selectByPrimaryKey(@PathVariable("id")Integer id) {
+        try {
+            List<GePolicyRaw> i = gePolicyRawService.getById(id);
+            if (i != null) {
+                return JSONResponse.OK(Constants.SUCCESS_200, i);
             }
         } catch (MyBatisSystemException ex) {
             return JSONResponse.ERROR(Constants.ERROR_500, ex.getMessage());

@@ -1,0 +1,5 @@
+运行时用管理员形式打开命令符
+
+找到项目路径输入npm install wangeditor@2.1.23
+
+然后再输入npm run dev

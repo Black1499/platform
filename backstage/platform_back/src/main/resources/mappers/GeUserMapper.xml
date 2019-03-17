@@ -17,7 +17,13 @@
     <result column="parse_id" jdbcType="INTEGER" property="parseId" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+    <association property="role" column="role_id"
+                 select="com.nf147.platform.dao.GeRoleMapper.selectByPrimaryKey"/>
   </resultMap>
+  <select id="selectByNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from `ge_user` where `number`=#{number}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from ge_user
     where id = #{id,jdbcType=INTEGER}
@@ -27,13 +33,13 @@
       number, password, contact, 
       email, head_portrait, phone, 
       remark, id_card, birthday, 
-      parse_id, status, type
+      parse_id, status, type ,role_id
       )
     values (#{id,jdbcType=INTEGER}, #{enterpriseId,jdbcType=INTEGER}, #{institutionId,jdbcType=INTEGER}, 
       #{number,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{headPortrait,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, 
-      #{parseId,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}
+      #{parseId,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},#{roleId,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.nf147.platform.entity.GeUser">
@@ -51,18 +57,19 @@
       birthday = #{birthday,jdbcType=TIMESTAMP},
       parse_id = #{parseId,jdbcType=INTEGER},
       status = #{status,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR}
+      type = #{type,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, enterprise_id, institution_id, number, password, contact, email, head_portrait, 
-    phone, remark, id_card, birthday, parse_id, status, type
+    phone, remark, id_card, birthday, parse_id, status, type,role_id
     from ge_user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, enterprise_id, institution_id, number, password, contact, email, head_portrait, 
-    phone, remark, id_card, birthday, parse_id, status, type
+    phone, remark, id_card, birthday, parse_id, status, type,role_id
     from ge_user
   </select>
 </mapper>

@@ -4,11 +4,14 @@
 - backstage：主要存放后台代码
 - db：主要存放sql文件
 - doc：主要存放项目相关文档
+	- 政策发布平台.xmind：项目业务分析思维导图
+	- 政策发布平台.docx：原需求文档
+	- 政策信息发布平台共性需求.docx：项目共性要求，如统一的api,统一的编码规范
+	- 政策发布平台数据字典.docx：开发人员看，主要是数据库表格，已经字段信息。
+	- 政策发布平台数据库维护日志.xlsx：数据库维护记录
+
 - frontend：主要存放前端项目	
-- vue-web-portal:门户网站界面
-- vue-web-manage:后台管理界面
+	- vue-web-portal:门户网站界面
+	- vue-web-manage:后台管理界面
 
-### testdb.sql文件说明
-
-这里是一个项目测试数据库。下载完毕后,执行此sql文件,使用idea打开platform_back项目,开启服务器访问localhost:8080/emp,测试项目能否正常运行。
 

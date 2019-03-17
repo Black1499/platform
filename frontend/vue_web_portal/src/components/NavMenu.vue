@@ -33,11 +33,12 @@
 	}
 
 	.shape {
-		margin: 20px auto;
-		width: 1250px;
+		margin: 10px auto;
+		width: 90%;
 		height: 40px;
 		background-color: #6495ED;
 		list-style: none;
+		border-radius:10px;
 	}
 
 	.shape li {
@@ -59,5 +60,6 @@
 
 	.shape li:hover {
 		background-color: #c00;
+		border-radius:10px
 	}
 </style>

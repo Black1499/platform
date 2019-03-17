@@ -59,4 +59,29 @@
     shared_times, upvote_times, favor_times, readed_times, created_time, updated_time
     from ge_policy
   </select>
+  <!-- 修改 -->
+<update id="updateByFavor" parameterType="java.lang.Integer">
+    update ge_policy
+    set favor_times = #{favorTimes,jdbcType=INTEGER}+1
+    where id = #{id,jdbcType=INTEGER}
+</update>
+<update id="updateByComment" parameterType="java.lang.Integer">
+    update ge_policy
+    set comment_times = #{commentTimes,jdbcType=INTEGER}+1
+    where id = #{id,jdbcType=INTEGER}
+</update>
+  <update id="updataReadedTimes" parameterType="java.lang.Integer">
+    update ge_policy set readed_times = readed_times+1
+    where id= #{policyId,jdbcType=INTEGER};
+  </update>
+  <update id="updataShareTimes" parameterType="java.lang.Integer">
+    update ge_policy set shared_times = shared_times+1
+    where id= #{policyId,jdbcType=INTEGER};
+  </update>
+  <update id="updatUpvoteTimes" parameterType="java.lang.Integer">
+    update ge_policy set upvote_times = upvote_times+1
+    where id= #{policyId,jdbcType=INTEGER};
+  </update>
+
+
 </mapper>

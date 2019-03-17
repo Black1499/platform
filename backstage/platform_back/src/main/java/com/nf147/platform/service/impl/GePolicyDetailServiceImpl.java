@@ -90,4 +90,20 @@ public class GePolicyDetailServiceImpl implements GePolicyDetailService {
     public List<GePolicyDetail> findByPage(int start, int pageSize) {
         return gePolicyDetailMapper.findByPage((start - 1) * pageSize, pageSize);
     }
+
+    /**
+     * 分页查询政策结构表和政策表
+     * // TODO: 2019/2/21
+     * @param start    起始页
+     * @param pageSize 每页的条数
+     * @param status 状态
+     * @return
+     */
+    @Override
+    public List<GePolicyDetail> findByStatus(int start, int pageSize, String status) {
+        if (start > 0 && pageSize > 0 && "处理".equals(status)) {
+            return gePolicyDetailMapper.findByStatus(start, pageSize, status);
+        }
+        return null;
+    }
 }

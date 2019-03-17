@@ -17,7 +17,7 @@
         <td width="70"><b>索 引 号：</b></td> 
         <td width="260">000014349/2018-00222</td> 
         <td width="70"><b>主题分类：</b></td> 
-        <td width="260">卫ge_policy_raw生、体育\\医药管理</td> 
+        <td width="260">卫生、体育、医药管理</td> 
        </tr> 
        <tr> 
         <td><b>发文机关：</b></td> 

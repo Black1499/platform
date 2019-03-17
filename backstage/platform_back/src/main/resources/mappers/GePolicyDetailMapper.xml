@@ -129,4 +129,12 @@
     <include refid="policy"/>
     from ge_policy_detail d left join ge_policy p on d.id = p.policy_detail_id limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
+
+  <!--分页查询 根据状态分页查询-->
+  <select id="findByStatus" resultMap="BaseResultMap">
+    select
+    <include refid="detail"/>,
+    <include refid="policy"/>
+    from ge_policy_detail d left join ge_policy p on d.id = p.policy_detail_id where d.status = #{status,jdbcType=VARCHAR} limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
 </mapper>

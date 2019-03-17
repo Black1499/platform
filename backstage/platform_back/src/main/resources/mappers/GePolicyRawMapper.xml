@@ -66,14 +66,6 @@
     status = #{status,jdbcType=VARCHAR }
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, crawl_url, crawl_time, index_number, title, release_office, release_number, 
-    policy_basis, wiritten_time, release_time, effect_time, image_url, status, remark, 
-    content, html
-    from ge_policy_raw
-    where id = #{id,jdbcType=INTEGER}
-  </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, crawl_url, crawl_time, index_number, title, release_office, release_number, 
     policy_basis, wiritten_time, release_time, effect_time, image_url, status, remark, 
@@ -86,5 +78,12 @@
     policy_basis, wiritten_time, release_time, effect_time, image_url, status, remark,
     content, html
     from ge_policy_raw limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getById" resultMap="BaseResultMap">
+    select id, crawl_url, crawl_time, index_number, title, release_office, release_number,
+    policy_basis, wiritten_time, release_time, effect_time, image_url, status, remark,
+    content, html
+    from ge_policy_raw
+    where id = #{id,jdbcType=INTEGER}
   </select>
 </mapper>

@@ -31,4 +31,11 @@ public interface GePolicyRawMapper {
      * @return
      */
     List<GePolicyRaw> findByPage(@Param("start") int start, @Param("pageSize") int pageSize);
+
+    /**
+     * 按id查询原始政策表
+     * // TODO: 2019/2/21
+     * @return
+     */
+    List<GePolicyRaw> getById(Integer id);
 }

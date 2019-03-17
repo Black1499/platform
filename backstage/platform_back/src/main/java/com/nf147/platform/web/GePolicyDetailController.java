@@ -86,11 +86,29 @@ public class GePolicyDetailController {
      * @info /policy/getByPager/{parameter} 分页查询政策结构表和政策表
      * @remark √
      */
-    @GetMapping("/policy/Detail/getByPager/{start}/{number}")
+    @GetMapping("/policy/detail/getByPager/{start}/{number}")
     public JSONResponse getByPolicyRawPager(@PathVariable("start") int start, @PathVariable("number") int number) {
         try {
             if (start > 0 && number > 0) {
                 return JSONResponse.OK(Constants.SUCCESS_200, gePolicyDetailService.findByPage(start, number));
+            }
+        } catch (MyBatisSystemException ex) {
+            return JSONResponse.ERROR(Constants.ERROR_500, ex.getMessage());
+        } catch (Exception ex) {
+            return JSONResponse.ERROR(Constants.ERROR_408, ex.getMessage());
+        }
+        return JSONResponse.ERROR(Constants.SUCCESS_202);
+    }
+
+    /**
+     * @info /policy/getByStatus/{三个参数} 根据状态分页查询政策结构表和政策表
+     * @remark √
+     */
+    @GetMapping("/policy/detail/getByStatus/{start}/{number}/{status}")
+    public JSONResponse getByStatus(@PathVariable("start") int start, @PathVariable("number") int number, @PathVariable("status") String status) {
+        try {
+            if (start > 0 && number > 0 ) {
+                return JSONResponse.OK(Constants.SUCCESS_200, gePolicyDetailService.findByStatus(start, number,status));
             }
         } catch (MyBatisSystemException ex) {
             return JSONResponse.ERROR(Constants.ERROR_500, ex.getMessage());

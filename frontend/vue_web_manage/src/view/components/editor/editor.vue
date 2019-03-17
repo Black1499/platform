@@ -1,30 +1,25 @@
 <template>
   <div>
-    <editor ref="editor" :value="content" @on-change="handleChange"/>
-    <Button @click="changeContent">修改编辑器内容</Button>
+   <div id="websiteEditorElem" style="height: 250px"></div>
   </div>
 </template>
 
 <script>
-import Editor from '_c/editor'
+import E from 'wangeditor'
 export default {
   name: 'editor_page',
   components: {
-    Editor
+    E
   },
-  data () {
-    return {
-      content: '12312323'
+
+mounted () {
+      // wangeditor
+     var phoneEditor = new E('phoneEditorElem')
+      phoneEditor.onchange = function () {
+        this.formData.phone = this.$txt.html()
+      }
+      phoneEditor.create()
     }
-  },
-  methods: {
-    handleChange (html, text) {
-      console.log(html, text)
-    },
-    changeContent () {
-      this.$refs.editor.setHtml('<p>powered by wangeditor</p>')
-    }
-  }
 }
 </script>
 
